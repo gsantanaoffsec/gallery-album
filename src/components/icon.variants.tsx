@@ -1,15 +1,15 @@
-import {tv} from "tailwind-variants";
+import { tv } from 'tailwind-variants'
 
 const iconVariants = tv({
-	variants: {
-		animate: {
-			false: "",
-			true: "animate-spin",
-		},
-	},
-	defaultVariants: {
-		animate: false,
-	},
-});
+  variants: {
+    animate: {
+      false: '',
+      true: 'animate-spin',
+    },
+  },
+  defaultVariants: {
+    animate: false,
+  },
+})
 
-export default iconVariants;
+export default iconVariants
