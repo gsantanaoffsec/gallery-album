@@ -1,12 +1,12 @@
 import { tv } from 'tailwind-variants'
 
-export const imageFilePreviewVariants = tv({
+export const imagePreviewVariants = tv({
   base: `
     rounded-lg overflow-hidden
     `,
 })
 
-export const imageFilePreviewImageVariants = tv({
+export const imagePreviewImageVariants = tv({
   base: `
     w-full h-full object-cover
     `,
