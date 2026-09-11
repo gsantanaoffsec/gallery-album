@@ -17,7 +17,7 @@ import InputSingleFile from '../../../components/input-single-file'
 import InputText from '../../../components/input-text'
 import Skeleton from '../../../components/skeleton'
 import Text from '../../../components/text'
-import useAlbums from '../../albums/hooks/use-album'
+import useAlbums from '../../albums/hooks/use-albums'
 import usePhoto from '../../albums/hooks/use-photo'
 import { photoNewFormSchema, type PhotoNewFormSchema } from '../schemas'
 
