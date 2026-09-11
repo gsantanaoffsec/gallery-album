@@ -22,7 +22,7 @@ function handleSelect() {
     const newValue = !isSelected
 
     setIsSelected(newValue)
-    
+
     onSelectImage?.(newValue)
 }
 
@@ -35,7 +35,7 @@ function handleSelect() {
     >
       <InputCheckBox
         size="sm"
-        checked={isSelected}
+        defaultChecked={isSelected}
         onChange={handleSelect}
         className="absolute top-1 left-1"
       />
