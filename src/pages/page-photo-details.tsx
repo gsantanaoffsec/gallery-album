@@ -6,7 +6,7 @@ import Skeleton from '../components/skeleton'
 import Text from '../components/text'
 import AlbumsListSelectable from '../contexts/albums/components/albums-list-selectable'
 import useAlbums from '../contexts/albums/hooks/use-albums'
-import usePhoto from '../contexts/albums/hooks/use-photo'
+import usePhoto from '../contexts/photos/hooks/use-photo'
 import PhotosNavigator from '../contexts/photos/components/photos-navigator'
 import type { Photo } from '../contexts/photos/models/photo'
 

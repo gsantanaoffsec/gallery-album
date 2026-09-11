@@ -3,6 +3,7 @@ import { toast } from 'sonner'
 import { api, fetcher } from '../../../helpers/api'
 import type { Photo } from '../../photos/models/photo'
 import type { PhotoNewFormSchema } from '../../photos/schemas'
+import usePhotoAlbums from './use-photo-albums'
 
 interface PhotoDetailResponse extends Photo {
   nextPhotoId?: string
@@ -18,6 +19,7 @@ export default function usePhoto(id?: string) {
   })
 
   const queryClient = useQueryClient()
+  const { managePhotoOnAlbum } = usePhotoAlbums()
 
   async function createPhoto(payload: PhotoNewFormSchema) {
     try {
@@ -41,9 +43,7 @@ export default function usePhoto(id?: string) {
       toast.success('Foto criada com sucesso')
 
       if (payload.albumsIds && payload.albumsIds.length > 0) {
-        await api.put(`/photos/${photo.id}/albums`, {
-          albumsIds: payload.albumsIds,
-        })
+        await managePhotoOnAlbum(photo.id, payload.albumsIds)
       }
     } catch (error) {
       toast.error('Erro ao criar foto!')
