@@ -18,7 +18,7 @@ import InputText from '../../../components/input-text'
 import Skeleton from '../../../components/skeleton'
 import Text from '../../../components/text'
 import useAlbums from '../../albums/hooks/use-albums'
-import usePhoto from '../../photos/hooks/use-photo'
+import usePhoto from '../hooks/use-photo'
 import { photoNewFormSchema, type PhotoNewFormSchema } from '../schemas'
 
 interface PhotoNewDialogProps {

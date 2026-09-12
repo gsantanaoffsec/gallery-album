@@ -2,8 +2,8 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router'
 import { toast } from 'sonner'
 import { api, fetcher } from '../../../helpers/api'
-import type { Photo } from '../../photos/models/photo'
-import type { PhotoNewFormSchema } from '../../photos/schemas'
+import type { Photo } from '../models/photo'
+import type { PhotoNewFormSchema } from '../schemas'
 import usePhotoAlbums from './use-photo-albums'
 
 interface PhotoDetailResponse extends Photo {
@@ -13,10 +13,10 @@ interface PhotoDetailResponse extends Photo {
 
 export default function usePhoto(id?: string) {
   const navigate = useNavigate()
+
   const { data, isLoading } = useQuery<PhotoDetailResponse>({
     queryKey: ['photo', id],
     queryFn: () => fetcher(`/photos/${id}`),
-    // Conversão para boolean
     enabled: !!id,
   })
 
@@ -28,6 +28,7 @@ export default function usePhoto(id?: string) {
       const { data: photo } = await api.post<Photo>('/photos', {
         title: payload.title,
       })
+
       await api.post(
         `/photos/${photo.id}/image`,
         {
@@ -40,13 +41,13 @@ export default function usePhoto(id?: string) {
         },
       )
 
-      queryClient.invalidateQueries({ queryKey: ['photos'] })
-
-      toast.success('Foto criada com sucesso')
-
       if (payload.albumsIds && payload.albumsIds.length > 0) {
         await managePhotoOnAlbum(photo.id, payload.albumsIds)
       }
+
+      queryClient.invalidateQueries({ queryKey: ['photos'] })
+
+      toast.success('Foto criada com sucesso')
     } catch (error) {
       toast.error('Erro ao criar foto!')
       throw error
